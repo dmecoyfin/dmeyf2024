@@ -7,7 +7,9 @@ require("rpart")
 require("rpart.plot")
 
 # Aqui se debe poner la carpeta de la materia de SU computadora local
-setwd("~/buckets/b1") # Establezco el Working Directory
+setwd("C:\\Users\\ebald\\dmeyf")
+
+
 
 # cargo el dataset que tiene la clase calculada !
 dataset <- fread("./datasets/competencia_01.csv")
@@ -63,3 +65,4 @@ fwrite(dapply[, list(numero_de_cliente, Predicted)],
         file = "./exp/KA2001/K101_001.csv",
         sep = ","
 )
+
