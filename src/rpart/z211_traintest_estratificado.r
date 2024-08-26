@@ -40,7 +40,7 @@ particionar <- function(
 # Aqui comienza el programa
 
 # Establezco el Working Directory, elija una carpeta de su 
-setwd("~/buckets/b1/")
+setwd("C:/Users/Federico/Desktop/Repositorios/dmeyf2024/src/rpart")
 
 # cargo el dataset
 dataset <- fread("./datasets/competencia_01.csv")

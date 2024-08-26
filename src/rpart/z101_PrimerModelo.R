@@ -10,7 +10,7 @@ require("rpart.plot")
 setwd("C:/Users/Federico/Desktop/Repositorios/dmeyf2024/src/rpart") # Establezco el Working Directory
 
 # cargo el dataset que tiene la clase calculada !
-dataset <- fread("./datasets/competencia_01.csv")
+dataset <- fread("competencia_01.csv")
 
 dtrain <- dataset[foto_mes <= 202104] # defino donde voy a entrenar
 dapply <- dataset[foto_mes == 202106] # defino donde voy a aplicar el modelo
@@ -18,13 +18,13 @@ dapply <- dataset[foto_mes == 202106] # defino donde voy a aplicar el modelo
 # genero el modelo,  aqui se construye el arbol
 # quiero predecir clase_ternaria a partir de el resto de las variables
 modelo <- rpart(
-    formula = "clase_ternaria ~ .",
-    data = dtrain, # los datos donde voy a entrenar
-    xval = 0,
-    cp = -1, # esto significa no limitar la complejidad de los splits
-    minsplit = 250, # minima cantidad de registros para que se haga el split
-    minbucket = 100, # tamaño minimo de una hoja
-    maxdepth = 7  # profundidad maxima del arbol
+  formula = "clase_ternaria ~ .",
+  data = dtrain, # los datos donde voy a entrenar
+  xval = 0,
+  cp = -1, # esto significa no limitar la complejidad de los splits
+  minsplit = 250, # minima cantidad de registros para que se haga el split
+  minbucket = 100, # tamaño minimo de una hoja
+  maxdepth = 7  # profundidad maxima del arbol
 )
 
 
@@ -37,9 +37,9 @@ prp(modelo,
 
 # aplico el modelo a los datos nuevos
 prediccion <- predict(
-    object = modelo,
-    newdata = dapply,
-    type = "prob"
+  object = modelo,
+  newdata = dapply,
+  type = "prob"
 )
 
 # prediccion es una matriz con TRES columnas,
@@ -60,6 +60,6 @@ dir.create("./exp/KA2001")
 
 # solo los campos para Kaggle
 fwrite(dapply[, list(numero_de_cliente, Predicted)],
-        file = "./exp/KA2001/K101_001.csv",
-        sep = ","
+       file = "./exp/KA2001/K101_002.csv",
+       sep = ","
 )
