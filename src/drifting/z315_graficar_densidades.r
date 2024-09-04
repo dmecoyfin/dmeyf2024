@@ -52,7 +52,7 @@ graficar_campo <- function(campo) {
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 # Aqui comienza el programa
-setwd("~/buckets/b1/") # Establezco el Working Directory
+setwd("~/UBA/DMEyF/dmeyf2024/src/rpart/buckets/b1/")  # Establezco el Working Directory
 
 
 # cargo dataset
