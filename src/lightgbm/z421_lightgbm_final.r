@@ -34,10 +34,6 @@ PARAM$finalmodel$max_bin <- 31
 # Aqui empieza el programa
 setwd("~/buckets/b1")
 
-# cargo MI semilla, que esta en MI bucket
-tabla_semillas <- fread( "./datasets//mis_semillas.txt" )
-ksemilla_azar <- tabla_semillas[ 1, semilla ]  # 1 es mi primer semilla
-
 
 # cargo el dataset donde voy a entrenar
 dataset <- fread(PARAM$input$dataset, stringsAsFactors = TRUE)
