@@ -182,3 +182,5 @@ project/target
 .worksheet
 
 .vscode/settings.json
+src/monday/database.duckdb.wal
+src/monday/database.duckdb
