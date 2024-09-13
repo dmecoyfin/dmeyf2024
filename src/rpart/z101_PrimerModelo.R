@@ -2,12 +2,17 @@ require("data.table")
 require("rpart")
 require("rpart.plot")
 library(readr)
+library(tidyverse)
 
 
 setwd("C:/Users/Federico/Desktop/Repositorios/dmeyf2024/src/rpart") 
 
 # cargo el dataset que tiene la clase calculada !
 dataset <- fread("datasets/competencia_01_feature_new.csv")
+
+dataset = dataset %>% 
+  dplyr::select(-ctarjeta_visa,-ctarjeta_master,-Master_msaldototal,-Visa_msaldototal,-ctarjeta_visa_transacciones,-ctarjeta_master_transacciones,-mtarjeta_visa_consumo,-mtarjeta_master_consumo)
+
 
 dtrain <- dataset[foto_mes <= 202104] # defino donde voy a entrenar
 dapply <- dataset[foto_mes == 202106] # defino donde voy a aplicar el modelo
@@ -25,11 +30,11 @@ modelo <- rpart(
 )
 
 
-# grafico el arbol
-prp(modelo,
-    extra = 101, digits = -5,
-    branch = 1, type = 4, varlen = 0, faclen = 0
-)
+# # grafico el arbol
+# prp(modelo,
+#     extra = 101, digits = -5,
+#     branch = 1, type = 4, varlen = 0, faclen = 0
+# )
 
 
 # aplico el modelo a los datos nuevos
@@ -57,6 +62,6 @@ dir.create("./exp/KA2001")
 
 # solo los campos para Kaggle
 fwrite(dapply[, list(numero_de_cliente, Predicted)],
-       file = "./exp/KA2001/K101_004.csv",
+       file = "./exp/KA2001/K101_007.csv",
        sep = ","
 )
