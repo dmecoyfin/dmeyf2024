@@ -1,16 +1,13 @@
-# Arbol elemental con libreria  rpart
-# Debe tener instaladas las librerias  data.table ,  rpart  y  rpart.plot
-
-# cargo las librerias que necesito
 require("data.table")
 require("rpart")
 require("rpart.plot")
+library(readr)
 
-# Aqui se debe poner la carpeta de la materia de SU computadora local
-setwd("C:/Users/Federico/Desktop/Repositorios/dmeyf2024/src/rpart") # Establezco el Working Directory
+
+setwd("C:/Users/Federico/Desktop/Repositorios/dmeyf2024/src/rpart") 
 
 # cargo el dataset que tiene la clase calculada !
-dataset <- fread("competencia_01.csv")
+dataset <- fread("datasets/competencia_01_feature_new.csv")
 
 dtrain <- dataset[foto_mes <= 202104] # defino donde voy a entrenar
 dapply <- dataset[foto_mes == 202106] # defino donde voy a aplicar el modelo
@@ -60,6 +57,6 @@ dir.create("./exp/KA2001")
 
 # solo los campos para Kaggle
 fwrite(dapply[, list(numero_de_cliente, Predicted)],
-       file = "./exp/KA2001/K101_002.csv",
+       file = "./exp/KA2001/K101_004.csv",
        sep = ","
 )
