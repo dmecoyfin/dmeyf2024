@@ -10,12 +10,15 @@ setwd("C:/Users/Federico/Desktop/Repositorios/dmeyf2024/src/rpart")
 # cargo el dataset que tiene la clase calculada !
 dataset <- fread("datasets/competencia_01_feature_new.csv")
 
-dataset = dataset %>% 
-  dplyr::select(-ctarjeta_visa,-ctarjeta_master,-Master_msaldototal,-Visa_msaldototal,-ctarjeta_visa_transacciones,-ctarjeta_master_transacciones,-mtarjeta_visa_consumo,-mtarjeta_master_consumo)
+
+# dataset = dataset %>% 
+#   dplyr::select(-ctarjeta_visa,-ctarjeta_master,-Master_msaldototal,-Visa_msaldototal,-ctarjeta_visa_transacciones,-ctarjeta_master_transacciones,-mtarjeta_visa_consumo,-mtarjeta_master_consumo)
 
 
 dtrain <- dataset[foto_mes <= 202104] # defino donde voy a entrenar
 dapply <- dataset[foto_mes == 202106] # defino donde voy a aplicar el modelo
+
+
 
 # genero el modelo,  aqui se construye el arbol
 # quiero predecir clase_ternaria a partir de el resto de las variables
@@ -49,11 +52,11 @@ prediccion <- predict(
 # cada columna es el vector de probabilidades
 
 # agrego a dapply una columna nueva que es la probabilidad de BAJA+2
-dapply[, prob_baja2 := prediccion[, "BAJA+2"]]
+dapply[, prob_baja := prediccion[, 1]]
 
 # solo le envio estimulo a los registros
 #  con probabilidad de BAJA+2 mayor  a  1/40
-dapply[, Predicted := as.numeric(prob_baja2 > 1 / 40)]
+dapply[, Predicted := as.numeric(prob_baja > 1 / 40)]
 
 # genero el archivo para Kaggle
 # primero creo la carpeta donde va el experimento
@@ -62,6 +65,6 @@ dir.create("./exp/KA2001")
 
 # solo los campos para Kaggle
 fwrite(dapply[, list(numero_de_cliente, Predicted)],
-       file = "./exp/KA2001/K101_007.csv",
+       file = "./exp/KA2001/K101_010.csv",
        sep = ","
 )
