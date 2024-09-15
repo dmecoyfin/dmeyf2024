@@ -52,19 +52,20 @@ prediccion <- predict(
 # cada columna es el vector de probabilidades
 
 # agrego a dapply una columna nueva que es la probabilidad de BAJA+2
-dapply[, prob_baja := prediccion[, 1]]
+dapply[, prob_baja2 := prediccion[, "BAJA+2"]]
 
 # solo le envio estimulo a los registros
 #  con probabilidad de BAJA+2 mayor  a  1/40
-dapply[, Predicted := as.numeric(prob_baja > 1 / 40)]
+dapply[, Predicted := as.numeric(prob_baja2 > 1 / 40)]
 
 # genero el archivo para Kaggle
 # primero creo la carpeta donde va el experimento
 dir.create("./exp/")
 dir.create("./exp/KA2001")
 
+
 # solo los campos para Kaggle
 fwrite(dapply[, list(numero_de_cliente, Predicted)],
-       file = "./exp/KA2001/K101_010.csv",
+       file = "./exp/KA2001/K101_011.csv",
        sep = ","
 )
