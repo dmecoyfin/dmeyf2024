@@ -1,3 +1,4 @@
+# ideas para un clustering derivado del Machnie Learning
 # limpio la memoria
 rm(list = ls()) # remove all objects
 gc() # garbage collection
@@ -33,7 +34,9 @@ dir.create(paste0("./exp/", PARAM$experimento, "/"), showWarnings= FALSE)
 setwd(paste0("./exp/", PARAM$experimento, "/"))
 
 
-# campos arbitrarios 
+# campos arbitrarios, solo como ejemplo
+# usted DEBE MANDARIAMENTE agregar más campos aqui
+# no permita que la pereza se apodere de su alma
 campos_cluster <- c("cliente_edad", "cliente_antiguedad", "ctrx_quarter",
   "mpayroll", "mcaja_ahorro", "mtarjeta_visa_consumo",
   "mtarjeta_master_consumo", "mprestamos_personales",
@@ -102,7 +105,7 @@ fwrite(dchico,
        sep= "\t")
 
 #--------------------------------------
-# Analisis de resultados de k-means
+# Analisis de resultados del clustering jerarquico
 # cantidad de registros por cluster
 
 dcentroides <- dchico[, lapply(.SD, mean, na.rm=TRUE), 
@@ -111,7 +114,7 @@ dcentroides <- dchico[, lapply(.SD, mean, na.rm=TRUE),
 
 dcentroides
 
-fwrite(dchico,
+fwrite(dcentroides,
        file= "centroides.txt",
        sep= "\t" )
 
@@ -129,7 +132,7 @@ n <- length(campos_cluster)
 # voy a graficar en escala logaritmica
 # cuidado con 
 
-pdf("bivariado_02.pdf")
+pdf("bivariado.pdf")
 
 for( i in 1:(n-1) ){
   for( j in (i+1):n ){
@@ -141,7 +144,7 @@ for( i in 1:(n-1) ){
       scale_colour_brewer(palette = "Dark2") +
       geom_point(alpha = 0.50) +
       xlab(campos_cluster[i]) +
-      scale_x_continuous(trans = pseudolog10_trans) +
+      # scale_x_continuous(trans = pseudolog10_trans) +
       ylab(campos_cluster[j]) 
       # scale_y_continuous(trans = pseudolog10_trans)
 
@@ -184,7 +187,7 @@ campos_totales <- setdiff( colnames(dwalkingdead),
 
 
 # Genero el grafico intervalo confianza 95%
-pdf("evol_RandomForest_03.pdf")
+pdf("evol_RandomForest.pdf")
 
 for( campo in campos_totales ) {
 
