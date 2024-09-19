@@ -197,7 +197,7 @@ EstimarGanancia <- function(x) {
 # Aqui empieza el programa
 
 # Establezco el Working Directory
-setwd("~/buckets/b1/")
+setwd("~/UBA/DMEyF/dmeyf2024/src/rpart/buckets/b1/")
 
 
 # cargo los datos

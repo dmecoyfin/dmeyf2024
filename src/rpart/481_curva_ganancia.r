@@ -22,10 +22,13 @@ PARAM <- list()
 PARAM$dataset <- "/Users/rmarques/UBA/DMEyF/dmeyf2024/datasets/competencia_01.csv"
 
 PARAM$semilla_primigenia <- 955841
+# PARAM$minsplit <- 600
+# PARAM$minbucket <- 5
+# PARAM$maxdepth <- 12
 
-PARAM$minsplit <- 300
+PARAM$minsplit <- 600
 PARAM$minbucket <- 20
-PARAM$maxdepth <- 11
+PARAM$maxdepth <- 3
 
 #------------------------------------------------------------------------------
 # particionar agrega una columna llamada fold a un dataset

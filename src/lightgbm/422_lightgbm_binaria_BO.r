@@ -37,7 +37,7 @@ PARAM <- list()
 PARAM$semilla_primigenia <- 102191
 PARAM$experimento <- "HT4220"
 
-PARAM$input$dataset <- "./datasets/competencia_01.csv"
+PARAM$input$dataset <- "/Users/rmarques/UBA/DMEyF/dmeyf2024/datasets/competencia_01.csv"
 PARAM$input$training <- c(202104) # los meses en los que vamos a entrenar
 
 # un undersampling de 0.1  toma solo el 10% de los CONTINUA
@@ -211,7 +211,7 @@ EstimarGanancia_lightgbm <- function(x) {
 # Aqui empieza el programa
 
 # Aqui se debe poner la carpeta de la computadora local
-setwd("~/buckets/b1/") # Establezco el Working Directory
+setwd("~/UBA/DMEyF/dmeyf2024/src/rpart/buckets/b1/") # Establezco el Working Directory
 
 
 # genero numeros primos
