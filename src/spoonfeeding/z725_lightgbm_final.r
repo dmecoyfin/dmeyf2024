@@ -43,6 +43,7 @@ action_limitar_memoria <- function( GB_min = 4 ) {
 }
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
+# Final Model -----------------------------------------------------------------
 # Aqui empieza el programa
 
 # Limito la memoria, para que ningun alumno debe sufrir que el R 
@@ -113,9 +114,12 @@ fwrite(tb_importancia,
   sep = "\t"
 )
 
+# grabo el modelo
+lgb.save(modelo, "modelo.model")
+
 #--------------------------------------
 
-
+# Scoring ---------------------------------------------------------------------
 # aplico el modelo a los datos future
 dfuture <- dataset[part_future==1L]
 
@@ -135,6 +139,7 @@ fwrite(tb_entrega,
   sep = "\t"
 )
 
+# Kaggle ----------------------------------------------------------------------
 # ordeno por probabilidad descendente
 setorder(tb_entrega, -prob)
 
