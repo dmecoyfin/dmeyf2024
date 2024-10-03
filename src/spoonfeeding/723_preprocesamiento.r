@@ -27,9 +27,11 @@ PARAM <- list()
 
 PARAM$experimento <- "PP7230"
 
-PARAM$input$dataset <- "./datasets/competencia_01.csv"
+PARAM$input$dataset <- "~/datasets/competencia_01.csv"
 
-PARAM$semilla_azar <- 102191 # Aqui poner su  primer  semilla
+getwd()
+
+PARAM$semilla_azar <- 955841 # Aqui poner su  primer  semilla
 
 
 PARAM$driftingcorreccion <- "ninguno"
@@ -262,9 +264,13 @@ tb_indices
 
 setwd("~/buckets/b1/") # Establezco el Working Directory
 
+
+getwd() 
 # cargo el dataset donde voy a entrenar el modelo
 dataset <- fread(PARAM$input$dataset)
 
+#dataset_path <- "~/datasets/competencia_01.csv"
+#dataset <- fread(dataset_path)
 
 
 # creo la carpeta donde va el experimento

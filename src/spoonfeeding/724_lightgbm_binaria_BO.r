@@ -36,7 +36,7 @@ PARAM <- list()
 PARAM$experimento_data <- "PP7230"
 PARAM$experimento <- "HT7240"
 
-PARAM$semilla_azar <- 102191 # Aqui poner su  primer  semilla
+PARAM$semilla_azar <- 955841 # Aqui poner su  primer  semilla
 
 PARAM$hyperparametertuning$POS_ganancia <- 273000
 PARAM$hyperparametertuning$NEG_ganancia <- -7000
