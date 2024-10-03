@@ -29,7 +29,7 @@ PARAM$experimento <- "PP7230"
 
 PARAM$input$dataset <- "./datasets/competencia_01.csv"
 
-PARAM$semilla_azar <- 102191 # Aqui poner su  primer  semilla
+PARAM$semilla_azar <- 955841 # Aqui poner su  primer  semilla
 
 
 PARAM$driftingcorreccion <- "ninguno"
@@ -56,7 +56,7 @@ PARAM$trainingstrategy$finaltrain_undersampling <- 1.0
 #------------------------------------------------------------------------------
 # limita el uso de memoria RAM a  Total_hardware - GB_min
 
-action_limitar_memoria <- function( GB_min = 4 ) {
+action_limitar_memoria <- function( GB_min = 8 ) {
 
   MemTotal <- as.numeric(system("awk '/MemTotal/ {print $2}' /proc/meminfo", intern=TRUE))
   MemTotal <- as.integer( MemTotal/ 1024 - GB_min*1024 )
@@ -244,7 +244,7 @@ drift_estandarizar <- function(campos_drift) {
 # Limito la memoria, para que ningun alumno debe sufrir que el R 
 #  aborte sin avisar si no hay suficiente memoria
 #  la salud mental de los alumnos es el bien mas preciado 
-action_limitar_memoria( 4 )
+action_limitar_memoria( 8 )
 
 
  # tabla de indices financieros
