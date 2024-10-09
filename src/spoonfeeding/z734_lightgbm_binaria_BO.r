@@ -192,42 +192,6 @@ EstimarGanancia_lightgbm <- function(x) {
   }
   cat("\n")
 
-  
-  ganancia_future <- c()
-  cantidad_future_normalizada <- c()
-  for( semilla in ksemillas )
-  {
-     cat( semilla, " " )
-     param_completo$seed <- semilla
-     modelo_final <- lgb.train(
-       data = dfinal_train,
-       param = param_completo,
-       verbose = -100
-     )
-
-     # aplico el modelo a testing y calculo la ganancia
-     prediccion <- predict(
-       modelo_final,
-       data.matrix(dataset_future[, campos_buenos, with = FALSE])
-     )
-
-     tbl <- copy(dataset_future[, list("gan" = ifelse(clase_ternaria == "BAJA+2",
-       PARAM$hyperparametertuning$POS_ganancia, 
-       PARAM$hyperparametertuning$NEG_ganancia))])
-
-     tbl[, prob := prediccion]
-     setorder(tbl, -prob)
-     tbl[, gan_acum := cumsum(gan)]
-     tbl[, gan_suavizada := frollmean(
-       x = gan_acum, n = 2001,
-       align = "center", na.rm = TRUE, hasNA = TRUE
-     )]
-
-    ganancia_future <- c( ganancia_future, tbl[, max(gan_suavizada, na.rm = TRUE)] )
-    cantidad_future_normalizada <- c( cantidad_future_normalizada, which.max(tbl[, gan_suavizada]) )
-  }
-  cat("\n")
-
 
   # voy grabando las mejores column importance
   if ( mean(ganancia_test_normalizada) > GLOBAL_gananciamax) {
@@ -246,9 +210,6 @@ EstimarGanancia_lightgbm <- function(x) {
   # logueo final
   ds <- list("cols" = ncol(dtrain), "rows" = nrow(dtrain))
   xx <- c(ds, copy(param_completo))
-
-  xx$future_ganancia <- mean(ganancia_future)
-  xx$future_envios <- mean(cantidad_future_normalizada)
 
   xx$estimulos <- mean(cantidad_test_normalizada)
   xx$ganancia <- mean(ganancia_test_normalizada)
@@ -327,14 +288,6 @@ dtrain <- lgb.Dataset(
 
 
 dataset_test <- dataset[part_testing == 1]
-
-dfinal_train <- lgb.Dataset(
-  data = data.matrix(dataset[part_final_train == 1L, campos_buenos, with = FALSE]),
-  label = dataset[part_final_train == 1L, clase01],
-  free_raw_data = FALSE
-)
-
-dataset_future <- dataset[part_future == 1]
 
 # libero espacio
 rm(dataset)
