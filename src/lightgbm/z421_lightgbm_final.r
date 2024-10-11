@@ -12,10 +12,10 @@ require("lightgbm")
 PARAM <- list()
 PARAM$experimento <- "KA4210"
 
-PARAM$semilla_primigenia <- 102191
+PARAM$semilla_primigenia <- 250231
 
 
-PARAM$input$dataset <- "./datasets/competencia_01.csv"
+PARAM$input$dataset <- "C:/Users/glova/OneDrive/Documentos/EyF/Video09212024/competencia_01.csv"
 PARAM$input$training <- c(202104) # meses donde se entrena el modelo
 PARAM$input$future <- c(202106) # meses donde se aplica el modelo
 
@@ -32,7 +32,7 @@ PARAM$finalmodel$max_bin <- 31
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 # Aqui empieza el programa
-setwd("~/buckets/b1")
+setwd("C:/Users/glova/OneDrive/Documentos/EyF/buckets/b11")
 
 
 # cargo el dataset donde voy a entrenar

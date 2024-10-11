@@ -15,7 +15,7 @@ PARAM <- list()
 PARAM$experimento <- "KA4720"
 
 # reemplazar por su primer semilla
-PARAM$semilla_primigenia <- 102191
+PARAM$semilla_primigenia <- 750317
 
 
 # hiperparámetros de Random Forest
@@ -29,11 +29,11 @@ PARAM$ranger <- list(
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 
-setwd("~/buckets/b1/") # Establezco el Working Directory
+setwd("C:/Users/glova/OneDrive/Documentos/EyF/buckets/b11") # Establezco el Working Directory
 
 
 # cargo los datos
-dataset <- fread("./datasets/competencia_01.csv")
+dataset <- fread("C:/Users/glova/OneDrive/Documentos/EyF/Video09212024/competencia_01.csv")
 
 
 # creo la carpeta donde va el experimento

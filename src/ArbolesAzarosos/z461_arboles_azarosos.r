@@ -15,7 +15,7 @@ PARAM <- list()
 PARAM$experimento <- "KA4610"
 
 # reemplazar por su primer semilla
-PARAM$semilla_primigenia <- 102191
+PARAM$semilla_primigenia <- 100109
 
 # parametros rpart
 
@@ -43,11 +43,11 @@ PARAM$grabar <- c(1, 2, 4, 8, 16, 32, 64, 128)
 #------------------------------------------------------------------------------
 # Aqui comienza el programa
 
-setwd("~/buckets/b1/") # Establezco el Working Directory
+setwd("C:/Users/glova/OneDrive/Documentos/EyF/buckets/b10") # Establezco el Working Directory
 
 
 # cargo los datos
-dataset <- fread("./datasets/competencia_01.csv")
+dataset <- fread("C:/Users/glova/OneDrive/Documentos/EyF/Video09212024/competencia_01.csv")
 
 # defino los dataset de entrenamiento y aplicacion
 dtrain <- dataset[foto_mes == 202104]

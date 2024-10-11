@@ -14,13 +14,13 @@ require("ranger")
 PARAM <- list()
 PARAM$experimento <- "clu-randomforest"
 PARAM$semilla_primigenia <- 102191   # aqui va SU semilla
-PARAM$dataset <- "~/datasets/competencia_01.csv"
+PARAM$dataset <- "C:/Users/glova/OneDrive/Documentos/EyF/Video09212024/competencia_01.csv"  # Modificación de la ruta
 
 
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 # Aqui empieza el programa
-setwd("~/buckets/b1")
+setwd("C:/Users/glova/OneDrive/Documentos/EyF/buckets/b1")
 
 # leo el dataset
 dataset <- fread(PARAM$dataset)
@@ -236,5 +236,3 @@ for( campo in campos_totales ) {
 }
 
 dev.off()
-
-
