@@ -13,7 +13,7 @@ PARAM <- list()
 PARAM$semilla_primigenia <- 102191
 PARAM$qsemillas_tope <- 200
 
-PARAM$dataset_nom <- "./datasets/competencia_01.csv"
+PARAM$dataset_nom <- "/Users/rmarques/UBA/DMEyF/dmeyf2024/datasets/competencia_01.csv"
 
 PARAM$training_pct <- 70L  # entre  1L y 99L 
 
@@ -172,7 +172,7 @@ MejorArbol <- function( qsemillas_tope, training_pct, param_rpart1, param_rpart2
 #------------------------------------------------------------------------------
 
 # Aqui se debe poner la carpeta de la computadora local
-setwd("~/buckets/b1/") # Establezco el Working Directory
+setwd("~/UBA/DMEyF/dmeyf2024/src/rpart/buckets/b1/")  # Establezco el Working Directory
 
 
 # genero numeros primos

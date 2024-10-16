@@ -14,7 +14,7 @@ PARAM$semilla_primigenia <- 102191
 PARAM$qsemillas <- 10000
 
 # dataset
-PARAM$dataset_nom <- "./datasets/competencia_01.csv"
+PARAM$dataset_nom <- "/Users/rmarques/UBA/DMEyF/dmeyf2024/datasets/competencia_01.csv"
 
 PARAM$training_pct <- 70L  # entre  1L y 99L 
 
@@ -100,7 +100,7 @@ ArbolEstimarGanancia <- function(semilla, param_basicos) {
 #------------------------------------------------------------------------------
 
 # Aqui se debe poner la carpeta de la computadora local
-setwd("~/buckets/b1/") # Establezco el Working Directory
+setwd("~/UBA/DMEyF/dmeyf2024/src/rpart/buckets/b1/")  # Establezco el Working Directory
 
 
 # genero numeros primos
@@ -116,8 +116,8 @@ dataset <- fread(PARAM$dataset_nom)
 # trabajo, por ahora, solo con 202104
 dataset <- dataset[foto_mes==202104]
 
-dir.create("~/buckets/b1/exp/EX2330u", showWarnings = FALSE)
-setwd("~/buckets/b1/exp/EX2330u")
+#dir.create("~/UBA/DMEyF/dmeyf2024/src/rpart/buckets/b1/exp/EX2330u", showWarnings = FALSE)
+#setwd("~/UBA/DMEyF/dmeyf2024/src/rpart/buckets/b1/exp/EX2330u")
 
 
 # la funcion mcmapply  llama a la funcion ArbolEstimarGanancia
