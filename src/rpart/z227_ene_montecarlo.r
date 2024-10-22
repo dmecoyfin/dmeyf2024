@@ -10,10 +10,10 @@ require("primes")
 PARAM <- list()
 # reemplazar por las propias semillas
 PARAM$semilla_primigenia <- 102191
-PARAM$qsemillas <- 50
+PARAM$qsemillas <- 100
 
 # dataset
-PARAM$dataset_nom <- "./datasets/competencia_01.csv"
+PARAM$dataset_nom <- "/Users/rmarques/UBA/DMEyF/dmeyf2024/datasets/competencia_01.csv"
 
 
 PARAM$training_pct <- 70L  # entre  1L y 99L 
@@ -99,7 +99,7 @@ ArbolEstimarGanancia <- function(semilla, param_basicos) {
 #------------------------------------------------------------------------------
 
 # Aqui se debe poner la carpeta de la computadora local
-setwd("~/buckets/b1/") # Establezco el Working Directory
+setwd("~/UBA/DMEyF/dmeyf2024/src/rpart/buckets/b1/") # Establezco el Working Directory
 
 
 # genero numeros primos
@@ -133,7 +133,7 @@ salidas
 tb_salida <- rbindlist(salidas)
 
 
-for( i in seq(10, 50, 10) )
+for( i in seq(10, 100, 10) )
 {
   cat( i, "\t", tb_salida[ 1:i, mean(ganancia_test)], "\n" )
 }

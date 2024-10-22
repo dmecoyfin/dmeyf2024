@@ -7,9 +7,9 @@ require("parallel")
 
 PARAM <- list()
 # reemplazar por las propias semillas
-PARAM$semillas <- c(102191, 200177, 410551, 552581, 892237)
+PARAM$semillas <- c(955841, 376793, 605837, 846577, 724939)
 
-PARAM$dataset_nom <- "./datasets/competencia_01.csv"
+PARAM$dataset_nom <- "/Users/rmarques/UBA/DMEyF/dmeyf2024/datasets/competencia_01.csv"
 
 PARAM$training_pct <- 70L  # entre  1L y 99L 
 
@@ -94,7 +94,7 @@ ArbolEstimarGanancia <- function(semilla, param_basicos) {
 #------------------------------------------------------------------------------
 
 # Aqui se debe poner la carpeta de la computadora local
-setwd("~/buckets/b1/") # Establezco el Working Directory
+setwd("~/UBA/DMEyF/dmeyf2024/src/rpart/buckets/b1/") # Establezco el Working Directory
 
 # cargo los datos
 dataset <- fread(PARAM$dataset_nom)
@@ -127,3 +127,12 @@ cat( "ganancia promedio: ", tb_salida[, mean(ganancia_test)], "\n" )
 cat(  "ganancia desvio estandar: ", tb_salida[, sd(ganancia_test)], "\n" )
 
 # desvio estandar Distribucion Binomial   sqrt( n * p * (1-p) )
+
+
+
+
+
+cat("Testing Total promedio: ", tb_salida[, mean(testing)], "\n")
+cat("Testing BAJA+2 promedio: ", tb_salida[, mean(testing_pos)], "\n")
+cat("Estimulos promedio: ", tb_salida[, mean(envios)], "\n")
+cat("Aciertos promedio: ", tb_salida[, mean(aciertos)], "\n")
