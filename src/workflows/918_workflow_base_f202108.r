@@ -10,20 +10,11 @@ require("data.table")
 
 if( !exists("envg") ) envg <- env()  # global environment 
 
-# envg$EXPENV <- list()
-# envg$EXPENV$bucket_dir <- "~/buckets/b1"
-# envg$EXPENV$exp_dir <- "~/buckets/b1/expw/"
-# envg$EXPENV$wf_dir <- "~/buckets/b1/flow/"
-# envg$EXPENV$repo_dir <- "~/dmeyf2024/"
-# envg$EXPENV$datasets_dir <- "~/buckets/b1/datasets/"
-# envg$EXPENV$messenger <- "~/install/zulip_enviar.sh"
-
-
 envg$EXPENV <- list()
-envg$EXPENV$bucket_dir <- "~/src/rpart/buckets"
-envg$EXPENV$exp_dir <- "/src/rpart/buckets/b1/expw/"
-envg$EXPENV$wf_dir <- "/src/rpart/buckets/b1/flow/"
-envg$EXPENV$repo_dir <- "Users/rmarques/UBA/DMEyF/dmeyf2024/"
+envg$EXPENV$bucket_dir <- "~/buckets/b1"
+envg$EXPENV$exp_dir <- "~/buckets/b1/expw/"
+envg$EXPENV$wf_dir <- "~/buckets/b1/flow/"
+envg$EXPENV$repo_dir <- "~/dmeyf2024/"
 envg$EXPENV$datasets_dir <- "~/buckets/b1/datasets/"
 envg$EXPENV$messenger <- "~/install/zulip_enviar.sh"
 
@@ -433,7 +424,7 @@ KA_evaluate_kaggle <- function( pinputexps )
 # Que predice 202108 donde NO conozco la clase
 
 # wf_agosto <- function( pnombrewf )
-wf_agosto <- function( pnombrewf )
+wf_agosto_base_test <- function( pnombrewf )
 {
   param_local <- exp_wf_init( pnombrewf ) # linea workflow inicial fija
 
@@ -471,5 +462,5 @@ wf_agosto <- function( pnombrewf )
 
 # llamo al workflow con future = 202108
 # wf_agosto()
-wf_agosto()
+wf_agosto_base_test()
 
