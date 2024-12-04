@@ -11,30 +11,32 @@ require("parallel")
 require("primes")
 
 PARAM <- list()
-# reemplazar por su primer semilla
-PARAM$semilla_primigenia <- 102191
-PARAM$qsemillas <- 20
+PARAM$semilla_primigenia <- 955841
+PARAM$qsemillas <- 5
 
 PARAM$training_pct <- 70L  # entre  1L y 99L 
 
-PARAM$dataset_nom <- "./datasets/competencia_01.csv"
+PARAM$dataset_nom <- "~/UBA/DMEyF/dmeyf2024/datasets/competencia_01.csv"
+
 
 #------------------------------------------------------------------------------
 # particionar agrega una columna llamada fold a un dataset
-#  que consiste en una particion estratificada segun agrupa
+#  que consiste en una particion estratificada segun agrupßa
 # particionar( data=dataset, division=c(70,30), agrupa=clase_ternaria, seed=semilla)
 #   crea una particion 70, 30
 
-particionar <- function(data, division, agrupa = "", campo = "fold", start = 1, seed = NA) {
+particionar <- function(data, division=c(70,30), agrupa = "clase_ternaria", campo = "fold", start = 1, seed = semilla_primigenia) {
   if (!is.na(seed)) set.seed(seed)
-
+  if (!agrupa %in% names(data)) {
+    stop("La columna de agrupación no existe en el dataset")
+  }
+  if (sum(division) != 100) {
+    stop("La suma de los valores de 'division' debe ser 100")
+  }
   bloque <- unlist(mapply(function(x, y) {
     rep(y, x)
   }, division, seq(from = start, length.out = length(division))))
-
-  data[, (campo) := sample(rep(bloque, ceiling(.N / length(bloque))))[1:.N],
-    by = agrupa
-  ]
+  data[, (campo) := sample(rep(bloque, ceiling(.N / length(bloque))))[1:.N], by = agrupa]
 }
 #------------------------------------------------------------------------------
 
@@ -103,7 +105,7 @@ ArbolesMontecarlo <- function(semillas, param_basicos) {
 #------------------------------------------------------------------------------
 
 # Aqui se debe poner la carpeta de la computadora local
-setwd("~/buckets/b1/") # Establezco el Working Directory
+setwd("/Users/rmarques/UBA/DMEyF/dmeyf2024/src/rpart/buckets/b1") # Establezco el Working Directory
 # cargo los datos
 
 
@@ -122,8 +124,8 @@ dataset <- dataset[foto_mes==202104]
 
 # creo la carpeta donde va el experimento
 # HT  representa  Hiperparameter Tuning
-dir.create("~/buckets/b1/exp/HT2810/", showWarnings = FALSE)
-setwd( "~/buckets/b1/exp/HT2810/" )
+dir.create("/Users/rmarques/UBA/DMEyF/dmeyf2024/src/rpart/buckets/b1/exp/HT2810/", showWarnings = FALSE)
+setwd( "/Users/rmarques/UBA/DMEyF/dmeyf2024/src/rpart/buckets/b1/exp/HT2810/" )
 
 
 # genero la data.table donde van los resultados detallados del Grid Search

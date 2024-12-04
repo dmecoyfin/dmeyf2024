@@ -14,7 +14,7 @@ PARAM$semilla_primigenia <- 102191
 PARAM$qsemillas <- 100
 
 # dataset
-PARAM$dataset_nom <- "./datasets/competencia_01.csv"
+PARAM$dataset_nom <- "/Users/rmarques/UBA/DMEyF/dmeyf2024/datasets/competencia_01.csv"
 
 PARAM$training_pct <- 70L  # entre  1L y 99L 
 
@@ -123,7 +123,7 @@ DosArbolesEstimarGanancia <- function(semilla, training_pct, param_rpart1, param
 #------------------------------------------------------------------------------
 
 # Aqui se debe poner la carpeta de la computadora local
-setwd("~/buckets/b1/") # Establezco el Working Directory
+setwd("~/UBA/DMEyF/dmeyf2024/src/rpart/buckets/b1/")  # Establezco el Working Directory
 
 
 # genero numeros primos
